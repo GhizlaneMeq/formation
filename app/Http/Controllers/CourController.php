@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourRequest;
 use App\Http\Requests\UpdateCourRequest;
 use Illuminate\Support\Str;
+
 use Inertia\Inertia;
+use Illuminate\Http\UploadedFile;
 
 
 class CourController extends Controller
@@ -50,6 +52,9 @@ class CourController extends Controller
 
         ]);
 
+        // $image=$request->image;
+        // $imagename = time().'.'.$image->getClientOriginalExtension();
+        // $image->move('images',$imagename);
 
 
         Cour::create([
@@ -59,7 +64,9 @@ class CourController extends Controller
             'video' => $request->video,
 
         ]);
+        
         return redirect('/');
+
     }
 
 

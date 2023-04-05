@@ -54,6 +54,12 @@ Route::get('/NewCours', function () {
 })->name('NewCours')->middleware(['auth']);
 
 
+// Route::get('/contact', function () {
+//     return Inertia::render('Contact/Contact');
+
+// })->name('contact');
+
+
 Route::post('/submitCours',[CourController::class , 'store'])->name('submitCours')->middleware(['auth']);
 
 Route::get('/',[CourController::class , 'index'])->name('index');
@@ -65,7 +71,7 @@ Route::get('/',[CourController::class , 'index'])->name('index');
 // })->name('cours');
 
 Route::get('/test', function () {
-    return Inertia::render('test/form');
+    return Inertia::render('test/form2');
 });
 
 // Route::get('/hhh', [isAdmin::class ,'index'])->middleware(['auth' , 'isadmin']) ;
