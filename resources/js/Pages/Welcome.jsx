@@ -1,6 +1,6 @@
 import { Link, Head } from '@inertiajs/react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth, laravelVersion, phpVersion ,props}) {
     return (
         <>
             <Head title="Welcome" />
@@ -32,10 +32,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     )}
                 </div>
 
-                
+
             </div>
 
-            
+
         </>
     );
 }

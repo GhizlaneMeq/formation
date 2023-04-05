@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourController;
+use App\Http\Controllers\isAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,3 +38,28 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+
+Route::get('/hhh', function () {
+    return Inertia::render('Auth/Login&SignUp');
+});
+
+Route::get('/ali', function () {
+    return Inertia::render('Cours/Cours');
+})->name('hhh')->middleware(['auth']);
+
+// Route::get('/nav', function () {
+//     return Inertia::render('Navbar/Navbar');
+// });
+
+// Route::get('/hhh', [isAdmin::class ,'index'])->middleware(['auth' , 'isadmin']) ;
+
+Route::get('/NewCours', function () {
+    return Inertia::render('newCours/newCours');
+
+})->name('NewCours')->middleware(['auth']);
+
+
+Route::post('/submitCours',[CourController::class , 'store'])->name('submitCours')->middleware(['auth']);
