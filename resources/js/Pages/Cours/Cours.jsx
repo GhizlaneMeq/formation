@@ -84,7 +84,7 @@ function Cours({ auth, cours }) {
 
             <div className="mt-5 pt-5 mx-5 container-fluid">
                 <div className="row ">
-                    {
+                    {/* {
                         cours.map((cour) => (
                             <div className="col-md-4" key={cour.id}>
                                 <div className="card" style={{ width: '18rem' }}>
@@ -102,7 +102,7 @@ function Cours({ auth, cours }) {
                             </div >
                         )
                         )
-                    }
+                    } */}
                 </div >
             </div >
 

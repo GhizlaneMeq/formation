@@ -26,6 +26,9 @@ class CourController extends Controller
             'Cours/Cours',
             ['cours' => $cours]
         );
+        // return 'hhh';
+
+        //  return Inertia::render('Cours/Cours');
     }
 
     /**
@@ -64,7 +67,7 @@ class CourController extends Controller
             'video' => $request->video,
 
         ]);
-        
+
         return redirect('/');
 
     }

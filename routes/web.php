@@ -18,14 +18,14 @@ use Inertia\Inertia;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -44,7 +44,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/login&sign', function () {
     return Inertia::render('Auth/Login&SignUp');
-});
+})->name('login&sign');
 
 
 
@@ -59,10 +59,15 @@ Route::get('/NewCours', function () {
 
 // })->name('contact');
 
+// Route::get('/', function () {
+//    return Inertia::render('Cours/Cours');
+
+// })->name('contact');
+
 
 Route::post('/submitCours',[CourController::class , 'store'])->name('submitCours')->middleware(['auth']);
 
-Route::get('/',[CourController::class , 'index'])->name('index');
+// Route::get('/',[CourController::class , 'index'])->name('index');
 
 
 
@@ -74,4 +79,4 @@ Route::get('/test', function () {
     return Inertia::render('test/form2');
 });
 
-// Route::get('/hhh', [isAdmin::class ,'index'])->middleware(['auth' , 'isadmin']) ;
+Route::get('/cours', [CourController::class ,'index']) ;
