@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CourController;
+use App\Http\Controllers\isAdmin;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,3 +38,45 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+
+Route::get('/login&sign', function () {
+    return Inertia::render('Auth/Login&SignUp');
+})->name('login&sign');
+
+
+
+Route::get('/NewCours', function () {
+    return Inertia::render('newCours/newCours');
+
+})->name('NewCours')->middleware(['auth']);
+
+
+// Route::get('/contact', function () {
+//     return Inertia::render('Contact/Contact');
+
+// })->name('contact');
+
+// Route::get('/', function () {
+//    return Inertia::render('Cours/Cours');
+
+// })->name('contact');
+
+
+Route::post('/submitCours',[CourController::class , 'store'])->name('submitCours')->middleware(['auth']);
+
+// Route::get('/',[CourController::class , 'index'])->name('index');
+
+
+
+// Route::get('/cours', function () {
+//     return Inertia::render('Cours/Cours');
+// })->name('cours');
+
+Route::get('/test', function () {
+    return Inertia::render('test/form2');
+});
+
+Route::get('/cours', [CourController::class ,'index']) ;
