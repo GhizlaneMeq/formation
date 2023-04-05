@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link, useForm } from '@inertiajs/react';
 
-import Dropdown from '@/Components/Dropdown';
-// import logo from"./logo.jpg"
+
+
 function Navbar({ auth }) {
 
 
@@ -28,16 +28,22 @@ function Navbar({ auth }) {
                             <li className="nav-item mx-4">
                                 <Link className="nav-link" href="#">Contact-us</Link>
                             </li>
-                            <li class="nav-item dropdown ps-5">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {auth.user.name}
-                                </a>
-                                <ul class="dropdown-menu " aria-labelledby="navbarDarkDropdownMenuLink">
-                                    <li><Link className="dropdown-item" href={route('profile.edit')} >Profile</Link></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><Link className="dropdown-item" href={route('logout')} method="post" >Log Out</Link></li>
-                                </ul>
-                            </li>
+                            {auth.user ? (
+                                <li className="nav-item dropdown ps-5">
+                                    <a className="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {auth.user.name}
+                                    </a>
+                                    <ul className="dropdown-menu " aria-labelledby="navbarDarkDropdownMenuLink">
+                                        <li><Link className="dropdown-item" href={route('profile.edit')} >Profile</Link></li>
+                                        <li><hr className="dropdown-divider" /></li>
+                                        <li><Link className="dropdown-item" href={route('logout')} method="post" >Log Out</Link></li>
+                                    </ul>
+                                </li>
+                            ) : (
+                                <li className="nav-item mx-4">
+                                    <Link className="nav-link" href="/login&sign">Login/SignUp</Link>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>

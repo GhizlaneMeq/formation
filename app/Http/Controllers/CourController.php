@@ -6,6 +6,9 @@ use App\Models\Cour;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourRequest;
 use App\Http\Requests\UpdateCourRequest;
+use Illuminate\Support\Str;
+use Inertia\Inertia;
+
 
 class CourController extends Controller
 {
@@ -15,6 +18,12 @@ class CourController extends Controller
     public function index()
     {
         //
+
+        $cours = Cour::all();
+        return Inertia::render(
+            'Cours/Cours',
+            ['cours' => $cours]
+        );
     }
 
     /**
@@ -36,37 +45,23 @@ class CourController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
+            'lien' => 'required',
+            'video' => 'required',
+
         ]);
 
 
-        // $title=$request->title;
-        // $description=$request->description;
-        // $image=$request->image;
 
+        Cour::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'lien' => $request->lien,
+            'video' => $request->video,
 
-
-        $cour = new Cour;
-
-
-        $cour->title=$request->title;
-
-        $cour->description=$request->description;
-
-
-        $image=$request->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $image->move('courimage',$imagename);
-
-        // $imageName = time().'.'.$request->image->extension();
-
-        // $request->image->move(public_path('images'), $imageName);
-
-        $cour->image=$imagename;
-
-        $cour->save();
-
+        ]);
+        return redirect('/');
     }
+
 
     /**
      * Display the specified resource.
